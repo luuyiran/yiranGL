@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{11da2182-00f1-47eb-8f23-a54a298b6180}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\camera.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mat4.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shader.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\array.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\draw.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_config.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cube_map.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\rbtree.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\win32.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\glad.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb_image.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nuklear.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\skybox.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\array.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\camera.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cube_map.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\draw.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\glad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\khrplatform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mat4.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rbtree.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uniforms.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nuklear.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
