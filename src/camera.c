@@ -12,7 +12,7 @@ static void update_projection(camera_t *camera) {
 
 static void update_view(camera_t *camera) {
     if (NULL == camera) return;
-    camera->view = lookAt(camera->position, vec3_add(camera->position, camera->front), camera->up);
+    camera->view = lookAt(camera->position, camera->target, camera->up);
 }
 
 void camera_update_keyboard(camera_t *camera, int direction, float deltaTime) {

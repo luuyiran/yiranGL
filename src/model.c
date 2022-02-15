@@ -1233,3 +1233,100 @@ model_t *load_teapot_model(int divs) {
     return teapot;
 }
 
+model_t *load_vase_model(int y_edgs) {
+    int x, y, idx = 0;
+    float dx, dy, two_pi = 2 * M_PI, pi_2 = M_PI / 2;
+    vec3 *pos = NULL;
+    vec3 *normal = NULL;
+    vec3 *tangent = NULL;
+    vec2 *uv = NULL;
+    GLuint *indices = NULL;
+    model_t *vase = NULL;
+
+    int x_edgs = 2 * y_edgs;
+    int n = (x_edgs + 1) * (y_edgs + 1);
+    int triangles = 2 * x_edgs * y_edgs;
+
+    assert(y_edgs > 0);
+
+    vase = (model_t *)calloc(1, sizeof(model_t));
+    assert(vase);
+    if (NULL == vase) {
+        fprintf(stderr, "malloc failed: can't molloc struct model_t!\n");
+        return NULL;
+    }
+    vase->name = str_alloc("vase");
+    model_add_mesh(vase);
+    model_add_default__material(vase);
+
+    array_resize(vase->position, n, sizeof(vec3));
+    array_resize(vase->normal, n, sizeof(vec3));
+    array_resize(vase->tangent, n, sizeof(vec3));
+    array_resize(vase->tex_coords, n, sizeof(vec2));
+    array_resize(vase->meshes->indices, 3 * triangles, sizeof(GLuint));
+
+    pos     = vase->position;
+    normal  = vase->normal;
+    tangent = vase->tangent;
+    uv      = vase->tex_coords;
+    indices = vase->meshes->indices;
+
+    dx = two_pi / x_edgs;
+    dy = two_pi / y_edgs;
+
+    idx = 0;
+    for (y = 0; y <= y_edgs; y++) {
+        float v = y * dy;
+        float cv = cos(v);
+        float sv = sin(v);
+
+        float r = 2 + sv;
+
+        for (x = 0; x <= x_edgs; x++) {
+            float u = x * dx;
+            float cu = cos(u);
+            float su = sin(u);
+
+            vec3 bi_tangent = vec3_normalize(build_vec3(-su, 0, cu));
+            
+            pos[idx] = build_vec3(r * cu, v, r * su);
+            tangent[idx] = vec3_normalize(build_vec3(cu * cv, 1, su * cv));
+            normal[idx] = vec3_normalize(vec3_cross(tangent[idx], bi_tangent));
+            uv[idx] = build_vec2(u / two_pi, v / two_pi);
+            idx++;
+        }
+    }
+
+    assert(idx == n);
+
+    idx = 0;
+    for (y = 0; y < y_edgs; y++) {
+        int start = y * (x_edgs + 1);
+        int next_start = (y + 1) * (x_edgs + 1);
+        for (x = 0; x < x_edgs; x++) {
+            int next_x = x + 1;
+            indices[idx++] = start + x;
+            indices[idx++] = next_start + x; 
+            indices[idx++] = start + next_x;
+
+            indices[idx++] = start + next_x;
+            indices[idx++] = next_start + x;
+            indices[idx++] = next_start + next_x;
+        }
+    }
+
+    assert(idx == 3 * triangles);
+
+    vase->bbox[0] = build_vec3(-3,0,-3);
+    vase->bbox[1] = build_vec3(3,two_pi,3);
+
+
+    init_uniforms(vase);
+    update_mesh_mtl_info(vase);
+
+    vase->scale = 1.f;
+    update_model_matrix(vase);
+
+    init_buffer(vase);
+    return vase;
+}

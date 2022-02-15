@@ -1,0 +1,6 @@
+x64/
+build/
+.vs/
+*.exe
+*.pdb
+bin/yiran

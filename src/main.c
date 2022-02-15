@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
     config_add_model(cfg, mdl);
 #endif 
 #if 1
-    mdl = load_sphere_model(2, 128);
+    mdl = load_sphere_model(2, 16);
     model_add_texture(mdl, "models/stone/BaseColor.png", DIFFUSE_TEXTURE, 0);
     model_add_texture(mdl, "models/stone/Normal.png", NORMAL_TEXTURE, 0);
     model_add_texture(mdl, "models/stone/Height.png", BUMP_TEXTURE, 0);
@@ -96,6 +96,16 @@ int main(int argc, char *argv[]) {
 
     config_add_model(cfg, mdl);
 #endif 
+
+#if 1
+    mdl = load_vase_model(64);
+    model_add_texture(mdl, "models/stone/BaseColor.png", DIFFUSE_TEXTURE, 0);
+    model_add_texture(mdl, "models/stone/Normal.png", NORMAL_TEXTURE, 0);
+    model_add_texture(mdl, "models/stone/Height.png", BUMP_TEXTURE, 0);
+    config_add_model(cfg, mdl);
+#endif 
+
+
 
     minb = mdl->bbox[0];
     maxb = mdl->bbox[1];

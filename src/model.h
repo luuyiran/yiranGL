@@ -74,6 +74,7 @@ model_t *load_cube_model(void);
 model_t *load_sphere_model(float r, int edges);
 model_t *load_torus_model(float R, float r, int nsides, int nrings);
 model_t *load_teapot_model(int divs);
+model_t *load_vase_model(int edges);
 void model_delete(model_t *model);
 
 void model_scale(model_t *model, float scale);
