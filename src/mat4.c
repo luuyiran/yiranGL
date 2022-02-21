@@ -168,6 +168,22 @@ mat4 rotate_z(float angle){
     return ret;
 }
 
+vec2 vec2_normalize(vec2 v) {
+    float inv_len = 0.f;
+    float len_sq = v.x*v.x + v.y*v.y;
+    if (len_sq < MAT4_EPSILON) {
+        fprintf(stderr, " warning: vec2_normalize: len_sq: %.12f\n", len_sq);
+        return v;
+    }
+    inv_len = 1.f / sqrt(len_sq);
+    v.x *= inv_len;
+    v.y *= inv_len;
+    return v;
+}
+
+float vec2_dot(vec2 a, vec2 b) {
+    return a.x * b.x + a.y * b.y;
+}
 
 vec3 vec3_normalize(vec3 v) {
     float inv_len = 0.f;

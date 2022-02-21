@@ -34,7 +34,7 @@ skybox_t *skybox_create(unsigned int cube_map) {
     }
 
     skybox->cubemap = cube_map;
-    model_add_cubemap(skybox->model, cube_map);
+    model_add_texture_with(skybox->model, cube_map, CUBEMAP_TEXTURE, "_YIRAN_CUBE_MAP_");
 
     return skybox;
 }

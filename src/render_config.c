@@ -101,7 +101,7 @@ void config_set_skybox(render_config *cfg, GLuint cube) {
         return;
 
     for (i = 0; i < (int)array_size(cfg->models); i++)
-        model_add_cubemap(cfg->models[i], cube);
+        model_add_texture_with(cfg->models[i], cube, CUBEMAP_TEXTURE, "_YIRAN_CUBE_MAP_");
 }
 
 void config_add_shader(render_config *cfg, GLuint shader, SET_UNIFORMS set) {

@@ -58,6 +58,9 @@
     <ClCompile Include="src\skybox.c">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\noise.c">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\array.h">
@@ -103,6 +106,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="src\nuklear.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\noise.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

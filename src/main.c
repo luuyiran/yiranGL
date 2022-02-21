@@ -7,6 +7,7 @@
 #include "render_config.h"
 #include "camera.h"
 #include "draw.h"
+#include "noise.h"
 #include "uniforms.h"
 
 
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]) {
     model_add_texture(mdl, "models/stone/Height.png", BUMP_TEXTURE, 0);
     config_add_model(cfg, mdl);
 #endif 
-#if 1
+#if 0
     mdl = load_sphere_model(2, 16);
     model_add_texture(mdl, "models/stone/BaseColor.png", DIFFUSE_TEXTURE, 0);
     model_add_texture(mdl, "models/stone/Normal.png", NORMAL_TEXTURE, 0);
@@ -99,9 +100,20 @@ int main(int argc, char *argv[]) {
 
 #if 1
     mdl = load_vase_model(64);
+#if 0
+/*
     model_add_texture(mdl, "models/stone/BaseColor.png", DIFFUSE_TEXTURE, 0);
     model_add_texture(mdl, "models/stone/Normal.png", NORMAL_TEXTURE, 0);
     model_add_texture(mdl, "models/stone/Height.png", BUMP_TEXTURE, 0);
+*/
+    model_add_texture(mdl, "color1.png", DIFFUSE_TEXTURE, 0);
+    model_add_texture(mdl, "color1-Normal.png", NORMAL_TEXTURE, 0);
+#else 
+    GLuint color, normal;
+    load_noise_vase(&color, &normal);
+    model_add_texture_with(mdl, color, DIFFUSE_TEXTURE, "_NOISE_DIFFUSE_");
+    model_add_texture_with(mdl, normal, NORMAL_TEXTURE, "_NOISE_NORMAL_");
+#endif 
     config_add_model(cfg, mdl);
 #endif 
 

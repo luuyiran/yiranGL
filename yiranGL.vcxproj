@@ -151,6 +151,7 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\mat4.c" />
     <ClCompile Include="src\model.c" />
+    <ClCompile Include="src\noise.c" />
     <ClCompile Include="src\nuklear.c" />
     <ClCompile Include="src\shader.c" />
     <ClCompile Include="src\array.c" />
@@ -173,6 +174,7 @@
     <ClInclude Include="src\khrplatform.h" />
     <ClInclude Include="src\mat4.h" />
     <ClInclude Include="src\model.h" />
+    <ClInclude Include="src\noise.h" />
     <ClInclude Include="src\nuklear.h" />
     <ClInclude Include="src\rbtree.h" />
     <ClInclude Include="src\render_config.h" />

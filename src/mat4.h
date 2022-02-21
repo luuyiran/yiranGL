@@ -40,6 +40,9 @@ mat4 rotate_x(float angle);
 mat4 rotate_y(float angle);
 mat4 rotate_z(float angle);
 
+vec2 vec2_normalize(vec2 v);
+float vec2_dot(vec2 a, vec2 b);
+
 vec3 vec3_normalize(vec3 v);
 vec3 vec3_cross(vec3 a, vec3 b);
 float vec3_len(vec3 v);

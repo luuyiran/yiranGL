@@ -14,7 +14,7 @@ LIBS =-lm -ldl -lGL -lX11  $(SANITIZE)
 SRC_EXT = src/glad.c src/stb_image.c
 SRC = src/nuklear.c src/array.c  src/camera.c  src/draw.c  src/render_config.c \
 	  src/utils.c   src/skybox.c src/model.c   src/x11.c   src/cube_map.c      \
-	  src/mat4.c    src/rbtree.c src/shader.c  src/main.c   
+	  src/mat4.c    src/rbtree.c src/shader.c  src/main.c  src/noise.c
 
 OBJ_EXT = $(SRC_EXT:%.c=$(BUILD_DIR)/%.o)
 OBJ = $(SRC:%.c=$(BUILD_DIR)/%.o)

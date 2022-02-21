@@ -135,6 +135,7 @@ void load_texture(model_t *model, char *path, char *name, texture_type type) {
         } else {
             fprintf(stderr, "texture failed to load at path: %s\n", file_name);
             free(file_name);
+            exit(-1);
             return;
         }
 
@@ -233,21 +234,21 @@ void model_add_texture(model_t *mdl, char *pic, texture_type type, int texture_s
     update_mesh_mtl_info(mdl);
 }
 
-void model_add_cubemap(model_t *mdl, GLuint cube) {
+void model_add_texture_with(model_t *mdl, GLuint id, texture_type type, const char* name) {
     texture_t texture;
     material_t *mtl = NULL;
     texture_t *tex = NULL;
     assert(mdl);
-    assert(cube);
-    if (!mdl || !cube)
+    assert(id);
+    if (!mdl || !id)
         return;
 
-    if (seach_texture(mdl, CUBE_MAP_NAME))
+    if (seach_texture(mdl, name))
         return;
 
-    texture.name = str_alloc(CUBE_MAP_NAME);
-    texture.id = cube;
-    texture.type = CUBEMAP_TEXTURE;
+    texture.name = str_alloc(name);
+    texture.id = id;
+    texture.type = type;
     array_push_back(mdl->textures, texture);
     tex = array_back(mdl->textures);
     for (mtl = array_begin(mdl->material); mtl != array_end(mdl->material); mtl++)
@@ -255,6 +256,8 @@ void model_add_cubemap(model_t *mdl, GLuint cube) {
 
     update_mesh_mtl_info(mdl);
 }
+
+
 
 void update_mesh_mtl_info(model_t *model) {
     int i;

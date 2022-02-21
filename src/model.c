@@ -1235,7 +1235,7 @@ model_t *load_teapot_model(int divs) {
 
 model_t *load_vase_model(int y_edgs) {
     int x, y, idx = 0;
-    float dx, dy, two_pi = 2 * M_PI, pi_2 = M_PI / 2;
+    float dx, dy, two_pi = 2 * M_PI;
     vec3 *pos = NULL;
     vec3 *normal = NULL;
     vec3 *tangent = NULL;
@@ -1244,8 +1244,8 @@ model_t *load_vase_model(int y_edgs) {
     model_t *vase = NULL;
 
     int x_edgs = 2 * y_edgs;
-    int n = (x_edgs + 1) * (y_edgs + 1);
-    int triangles = 2 * x_edgs * y_edgs;
+    int n = (x_edgs + 1) * (y_edgs + 1) + 1;
+    int triangles = 2 * x_edgs * y_edgs + x_edgs;
 
     assert(y_edgs > 0);
 
@@ -1297,6 +1297,11 @@ model_t *load_vase_model(int y_edgs) {
         }
     }
 
+    pos[idx] = build_vec3(0.f, 0.f, 0.f);
+    tangent[idx] = build_vec3(1.f, 0.f, 0.f);
+    normal[idx] = build_vec3(0.f, -1.f, 0.f);
+    uv[idx] = build_vec2(0.5f, 0.5f);
+    idx++;
     assert(idx == n);
 
     idx = 0;
@@ -1315,6 +1320,14 @@ model_t *load_vase_model(int y_edgs) {
         }
     }
 
+    for (x = 0; x < x_edgs; x++) {
+        indices[idx++] = n - 1;
+        indices[idx++] = x;
+        indices[idx++] = x + 1;
+        normal[x] = build_vec3(0.f, -1.f, 0.f);
+    }
+
+    normal[x_edgs] = build_vec3(0.f, -1.f, 0.f);
     assert(idx == 3 * triangles);
 
     vase->bbox[0] = build_vec3(-3,0,-3);

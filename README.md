@@ -23,6 +23,7 @@ yiranGL
   - [x] sphere
   - [x] torus
   - [x] teapot
+  - [x] vase
 - [x] shaders
   - [x] Blinn-Phong
   - [ ] PBR
@@ -40,7 +41,7 @@ yiranGL
   - [ ] Occlusion parallax mapping
   - [ ] Shadow mapping
   - [ ] postprocessing
-  - [ ] Perlin-Noise Texture
+  - [x] Perlin-Noise Texture
   - [ ] Tessellation
 - [x] Camera
   - Orbit camera
@@ -85,6 +86,7 @@ yiranGL
 
 
 
+### Noise Color and Normal Textures
 
-
+![image](doc/screenshot/noise.png)
 
